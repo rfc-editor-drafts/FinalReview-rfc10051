@@ -7,21 +7,11 @@
  <!ENTITY wj     "&#8288;">
 ]> 
 
-<rfc xmlns:xi="http://www.w3.org/2001/XInclude" docName="draft-ietf-calext-ical-tasks-17" number="0000" category="std" ipr="trust200902" consensus="true" updates="5545" obsoletes="" symRefs="true" sortRefs="true" tocInclude="true" submissionType="IETF" xml:lang="en" version="3" >
-
-<!--[rfced] Please note that the title has been updated as follows. The abbreviation has been expanded per Section 3.6 of RFC 7322 ("RFC Style Guide"). Please review.
-
-Original:
-   Task Extensions to iCalendar
-
-Current:
-   Task Extensions to the Internet Calendaring and Scheduling 
-   Core Object Specification (iCalendar)
--->
+<rfc xmlns:xi="http://www.w3.org/2001/XInclude" docName="draft-ietf-calext-ical-tasks-17" number="10051" category="std" ipr="trust200902" consensus="true" updates="5545" obsoletes="" symRefs="true" sortRefs="true" tocInclude="true" submissionType="IETF" xml:lang="en" version="3" >
 
   <front>
-    <title abbrev="Task Extensions to iCalendar">Task Extensions to the Internet Calendaring and Scheduling Core Object Specification (iCalendar)</title>
-    <seriesInfo name="RFC" value="0000"/>
+    <title abbrev="Task Extensions to iCalendar">Task Extensions to iCalendar</title>
+    <seriesInfo name="RFC" value="10051"/>
 
 <!--[rfced] Adrian, would you like to include the postal code 
 for your address?
@@ -278,7 +268,7 @@ Perhaps:
     Process Logic:
       Determines under what conditions one or more tasks are generated and 
       the actions to take upon task completion or upon the occurrence 
-      (or non-occurrence) of another status event.
+      (or non-occurrence) of some other status event.
 -->
 
   <dt>Process Logic:</dt><dd><t>Determines under what conditions a task (or tasks) is generated and the actions to take on completion, or some other status event occurring (or not) on the task.</t></dd>
@@ -347,6 +337,17 @@ Perhaps:
 <section><name>Task Type</name>
 
 <t>The "CONCEPT" property <xref target="RFC9253"/> is used to identify the type of task, for example:</t>
+
+<!--[rfced] In the submitted XML file, many elements have anchor attributes set to long strings.  May these anchors be removed, or do they serve a purpose? They are generated as id attributes in the HTML output.
+
+Scope: There are over 300 of these in the submitted (and edited) XML file.
+
+For example, in XML:
+anchor="_731d7a28-4305-020e-132c-f33baa87a86a"
+
+In HTML:
+<div id="_731d7a28-4305-020e-132c-f33baa87a86a">
+-->
 
 <sourcecode anchor="_731d7a28-4305-020e-132c-f33baa87a86a" type="text/calendar"><![CDATA[
 CONCEPT:http://example.com/task/delivery]]></sourcecode>
@@ -569,15 +570,14 @@ partprop =/ percent / ; OPTIONAL but MUST NOT occur more than once.
 <dl spacing="normal" newline="true">
   <dt>Format Definition:</dt><dd><t>This property parameter is redefined by the following notation, which adds the value "FAILED":</t>
 
-<!--[rfced] In Sections 9.1 and 11.2, there are similar ABNF snippets. 
-The descriptions in Section 11.2 include "Indicates" and periods at 
-the end of the comments, but the descriptions in Section 9.1 do not. 
-Should these descriptions be made consistent by perhaps removing 
-the periods and instances of "Indicates" in Section 11.2? If so, 
-should there be a space after the semicolon for consistency with 
-the other ABNF snippets? One example below.
+<!--[rfced] In Sections 9.1 and 11.2, there are similar ABNF rules. 
+The comments in Section 11.2 include "Indicates" and periods at 
+the end, but the comments in Section 9.1 do not. 
+Would you like these comments to be consistent by perhaps removing 
+the periods and instances of "Indicates" in Section 11.2? 
+(We have already added a space after the semicolon.) 
 
-Current:
+Original:
 (Section 9.1)
   partstat-todo   = ("NEEDS-ACTION" ; To-do needs action   
 
@@ -681,27 +681,20 @@ REASON:https://example.com/reason/delivered-on-time]]></sourcecode></dd>
   <dt>Conformance:</dt><dd><t>This property can be specified in a "VSTATUS" calendar component.</t></dd>
   <dt>Format Definition:</dt><dd><t>This property is defined by the following notation:</t>
 
-<!--[rfced] In Section 10.3, the ABNF under "Format Definition" has several 
-lines that are 1 character over the 69-character limit. To fix this, we 
-moved the equal signs (and the text that followed) over one space to the 
-left. We also capitalized the first word of each comment for consistency. 
-Please review and let us know of any objections.
--->
-
 <sourcecode anchor="_55dd5ba1-0cdb-51b9-60f2-02c13d3f51f3" type="abnf"><![CDATA[
 substate         = "SUBSTATE" substateparam ":" substatevalue CRLF
 
 substateparam    = *(";" other-param)
 
-substatevalue      = ("OK"        ; Everything is fine (the
-                    ;               default)
-                    / "ERROR"     ; Something is wrong (the REASON
-                    ;               code explains why)
-                    / "SUSPENDED" ; Waiting on some other task to
-                    ;               complete or availability of a
-                    ;               resource (REASON code explains
-                    ;               why)
-                    / iana-token) ; Other IANA-registered type]]></sourcecode></dd>
+substatevalue    = ("OK"        ; everything is fine (the default)
+                  / "ERROR"     ; something is wrong (the REASON
+                  ;               code explains why)
+                  / "SUSPENDED" ; waiting on some other task to
+                  ;               complete or availability of a
+                  ;               resource (REASON code explains
+                  ;               why)
+                  / iana-token) ; other IANA-registered type
+]]></sourcecode></dd>
 
   <dt>Description:</dt><dd><t>The substate property allows additional qualification and granularity of states to be recorded, in particular for the IN-PROCESS state. It allows individual substates to be recorded without the need to define and publish a subtask associated with a parent task purely to track that a particular state has been reached. This property also allows parallel states to be expressed, such as indicating that a task has been suspended at whatever state it has reached.</t></dd>
 <dt>Example:</dt>
@@ -841,15 +834,16 @@ type=""><![CDATA[
   <dt>Format Definition:</dt><dd><t>The "STATUS" property parameter list for tasks is redefined by the addition of the values "PENDING" and "FAILED":</t>
 
 <sourcecode anchor="_c5ffbc6c-4ec8-420c-44e8-31768639d493" type="abnf"><![CDATA[
-statvalue-todo  = "NEEDS-ACTION" ;Indicates to-do needs action.
-                / "COMPLETED"    ;Indicates to-do completed.
-                / "IN-PROCESS"   ;Indicates to-do in process of.
-                / "CANCELLED"    ;Indicates to-do was cancelled.
-                / "PENDING"      ;Indicates a to-do has been
-                                 ;created and accepted, but has
-                                 ; not yet started.
-                / "FAILED"       ;Indicates to-do has failed.
-;Extended status values for "VTODO" calendar component.]]></sourcecode></dd>
+statvalue-todo  = "NEEDS-ACTION" ; Indicates to-do needs action.
+                / "COMPLETED"    ; Indicates to-do completed.
+                / "IN-PROCESS"   ; Indicates to-do in process of.
+                / "CANCELLED"    ; Indicates to-do was cancelled.
+                / "PENDING"      ; Indicates a to-do has been
+                                 ;   created and accepted, but has
+                                 ;   not yet started.
+                / "FAILED"       ; Indicates to-do has failed.
+; Extended status values for "VTODO" calendar component.
+]]></sourcecode></dd>
 
   <dt>Description:</dt>
   <dd>
@@ -887,9 +881,9 @@ STATUS:FAILED]]></sourcecode></dd>
   <dt>Format Definition:</dt><dd><t>This component is defined by the following notation:</t>
 
 <sourcecode anchor="_c3556a5c-8c21-d81e-0446-4993b07dcbe7" type="abnf"><![CDATA[
-statusc = "BEGIN" ":" "VSTATUS" CRLF
-          statusprop
-          "END" ":" "VSTATUS" CRLF
+statusc        = "BEGIN" ":" "VSTATUS" CRLF
+                 statusprop
+                 "END" ":" "VSTATUS" CRLF
 
 statusprop     = *(
                ;
@@ -908,7 +902,8 @@ statusprop     = *(
                ;
                comment / styleddescription / iana-prop
                ;
-               )]]></sourcecode></dd>
+               )
+]]></sourcecode></dd>
 
 <dt>Examples:</dt><dd>
 <sourcecode anchor="_99859d3e-cee5-9d2e-2453-878785931d10" type="text/calendar"><![CDATA[
@@ -950,7 +945,7 @@ END:VSTATUS]]></sourcecode>
 uppercase preferred -->]]></sourcecode>
 </dd>
 
-<!--[rfced] In Section 13.1, the first line within the sourcecode (under "Example") exceeds the character limit for code blocks. We suggest wrapping the line as follows. Please let us know if this is agreeable or if you prefer otherwise.
+<!--[rfced] In Section 13.1, the first line within the sourcecode (under "Example") exceeds the character limit for source code elements. May the line be wrapped as follows or otherwise?
 
 Original:
    Example:
@@ -983,7 +978,7 @@ Perhaps:
 
 <section><name>Component Registration</name>
 
-<t>IANA has added the following new iCalendar component to the "Components" registry defined in <xref target="RFC5545" section="8.3.1"/> and located here: <eref target="https://www.iana.org/assignments/icalendar" brackets="angle"/>.</t>
+<t>IANA has added the following new iCalendar component to the "Components" registry defined in <xref target="RFC5545" section="8.3.1"/> and located on <eref target="https://www.iana.org/assignments/icalendar" brackets="angle"/>.</t>
 
 <table>
   <name>Addition to the Components Registry</name>
@@ -998,7 +993,7 @@ Perhaps:
     <tr>
       <td align="left"><t>VSTATUS</t></td>
       <td align="left"><t>Current</t></td>
-      <td align="left"><t><xref target="vstatus"/> of RFC XXXX</t></td>
+      <td align="left"><t><xref target="vstatus"/> of RFC 10051</t></td>
     </tr>
   </tbody>
 </table>
@@ -1006,7 +1001,7 @@ Perhaps:
 
 <section><name>Property Registrations</name>
 
-<t>IANA has added the following new iCalendar properties to the "Properties" registry defined in <xref target="RFC5545" section="8.3.2"/> and located here: <eref target="https://www.iana.org/assignments/icalendar" brackets="angle"/>.</t>
+<t>IANA has added the following new iCalendar properties to the "Properties" registry defined in <xref target="RFC5545" section="8.3.2"/> and located on <eref target="https://www.iana.org/assignments/icalendar" brackets="angle"/>.</t>
 
 <table>
   <name>Additions to the Properties Registry</name>
@@ -1021,27 +1016,27 @@ Perhaps:
     <tr>
       <td align="left"><t>ESTIMATED-DURATION</t></td>
       <td align="left"><t>Current</t></td>
-      <td align="left"><t><xref target="prop-estimated-duration"/> of RFC XXXX</t></td>
+      <td align="left"><t><xref target="prop-estimated-duration"/> of RFC 10051</t></td>
     </tr>
     <tr>
       <td align="left"><t>REASON</t></td>
       <td align="left"><t>Current</t></td>
-      <td align="left"><t><xref target="prop-reason"/> of RFC XXXX</t></td>
+      <td align="left"><t><xref target="prop-reason"/> of RFC 10051</t></td>
     </tr>
     <tr>
       <td align="left"><t>SUBSTATE</t></td>
       <td align="left"><t>Current</t></td>
-      <td align="left"><t><xref target="prop-substate"/> of RFC XXXX</t></td>
+      <td align="left"><t><xref target="prop-substate"/> of RFC 10051</t></td>
     </tr>
     <tr>
       <td align="left"><t>STATUS</t></td>
       <td align="left"><t>Current</t></td>
-      <td align="left"><t><xref target="prop-ext-status"/> of RFC XXXX</t></td>
+      <td align="left"><t><xref target="prop-ext-status"/> of RFC 10051</t></td>
     </tr>
     <tr>
       <td align="left"><t>TASK-MODE</t></td>
       <td align="left"><t>Current</t></td>
-      <td align="left"><t><xref target="prop-task-mode"/> of RFC XXXX</t></td>
+      <td align="left"><t><xref target="prop-task-mode"/> of RFC 10051</t></td>
     </tr>
   </tbody>
 </table>
@@ -1089,7 +1084,7 @@ Perhaps:
     <tr>
       <td align="left"><t>FAILED</t></td>
       <td align="left"><t>Current</t></td>
-      <td align="left"><t><xref target="prop-ext-status"/> of RFC XXXX</t></td>
+      <td align="left"><t><xref target="prop-ext-status"/> of RFC 10051</t></td>
     </tr>
     <tr>
       <td align="left"><t>FINAL</t></td>
@@ -1109,7 +1104,7 @@ Perhaps:
     <tr>
       <td align="left"><t>PENDING</t></td>
       <td align="left"><t>Current</t></td>
-      <td align="left"><t><xref target="prop-ext-status"/> of RFC XXXX</t></td>
+      <td align="left"><t><xref target="prop-ext-status"/> of RFC 10051</t></td>
     </tr>
     <tr>
       <td align="left"><t>TENTATIVE</t></td>
@@ -1141,17 +1136,17 @@ Perhaps:
     <tr>
       <td align="left"><t>OK</t></td>
       <td align="left"><t>Current</t></td>
-      <td align="left"><t><xref target="prop-substate"/> of RFC XXXX</t></td>
+      <td align="left"><t><xref target="prop-substate"/> of RFC 10051</t></td>
     </tr>
     <tr>
       <td align="left"><t>ERROR</t></td>
       <td align="left"><t>Current</t></td>
-      <td align="left"><t><xref target="prop-substate"/> of RFC XXXX</t></td>
+      <td align="left"><t><xref target="prop-substate"/> of RFC 10051</t></td>
     </tr>
     <tr>
       <td align="left"><t>SUSPENDED</t></td>
       <td align="left"><t>Current</t></td>
-      <td align="left"><t><xref target="prop-substate"/> of RFC XXXX</t></td>
+      <td align="left"><t><xref target="prop-substate"/> of RFC 10051</t></td>
     </tr>
   </tbody>
 </table>
@@ -1179,27 +1174,27 @@ Perhaps:
     <tr>
       <td align="left"><t>AUTOMATIC-COMPLETION</t></td>
       <td align="left"><t>Current</t></td>
-      <td align="left"><t><xref target="prop-task-mode"/> of RFC XXXX</t></td>
+      <td align="left"><t><xref target="prop-task-mode"/> of RFC 10051</t></td>
     </tr>
     <tr>
       <td align="left"><t>AUTOMATIC-FAILURE</t></td>
       <td align="left"><t>Current</t></td>
-      <td align="left"><t><xref target="prop-task-mode"/> of RFC XXXX</t></td>
+      <td align="left"><t><xref target="prop-task-mode"/> of RFC 10051</t></td>
     </tr>
     <tr>
       <td align="left"><t>AUTOMATIC</t></td>
       <td align="left"><t>Current</t></td>
-      <td align="left"><t><xref target="prop-task-mode"/> of RFC XXXX</t></td>
+      <td align="left"><t><xref target="prop-task-mode"/> of RFC 10051</t></td>
     </tr>
     <tr>
       <td align="left"><t>CLIENT</t></td>
       <td align="left"><t>Current</t></td>
-      <td align="left"><t><xref target="prop-task-mode"/> of RFC XXXX</t></td>
+      <td align="left"><t><xref target="prop-task-mode"/> of RFC 10051</t></td>
     </tr>
     <tr>
       <td align="left"><t>SERVER</t></td>
       <td align="left"><t>Current</t></td>
-      <td align="left"><t><xref target="prop-task-mode"/> of RFC XXXX</t></td>
+      <td align="left"><t><xref target="prop-task-mode"/> of RFC 10051</t></td>
     </tr>
   </tbody>
 </table>
@@ -1222,7 +1217,7 @@ Perhaps:
     <tr>
       <td align="left"><t>FAILED</t></td>
       <td align="left"><t>Current</t></td>
-      <td align="left"><t><xref target="param-val-partstat"/> of RFC XXXX</t></td>
+      <td align="left"><t><xref target="param-val-partstat"/> of RFC 10051</t></td>
     </tr>
   </tbody>
 </table>

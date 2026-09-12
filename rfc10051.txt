@@ -3,14 +3,13 @@
 
 
 Internet Engineering Task Force (IETF)                        A. Apthorp
-Request for Comments: 0000                                   DHL Express
+Request for Comments: 10051                                  DHL Express
 Updates: 5545                                                M. Douglass
 Category: Standards Track                   Bedework Commercial Services
 ISSN: 2070-1721                                           September 2026
 
 
- Task Extensions to the Internet Calendaring and Scheduling Core Object
-                       Specification (iCalendar)
+                      Task Extensions to iCalendar
 
 Abstract
 
@@ -39,7 +38,7 @@ Status of This Memo
 
    Information about the current status of this document, any errata,
    and how to provide feedback on it may be obtained at
-   https://www.rfc-editor.org/info/rfc0000.
+   https://www.rfc-editor.org/info/rfc10051.
 
 Copyright Notice
 
@@ -849,15 +848,14 @@ Table of Contents
 
       substateparam    = *(";" other-param)
 
-      substatevalue      = ("OK"        ; Everything is fine (the
-                          ;               default)
-                          / "ERROR"     ; Something is wrong (the REASON
-                          ;               code explains why)
-                          / "SUSPENDED" ; Waiting on some other task to
-                          ;               complete or availability of a
-                          ;               resource (REASON code explains
-                          ;               why)
-                          / iana-token) ; Other IANA-registered type
+      substatevalue    = ("OK"        ; everything is fine (the default)
+                        / "ERROR"     ; something is wrong (the REASON
+                        ;               code explains why)
+                        / "SUSPENDED" ; waiting on some other task to
+                        ;               complete or availability of a
+                        ;               resource (REASON code explains
+                        ;               why)
+                        / iana-token) ; other IANA-registered type
 
    Description:
       The substate property allows additional qualification and
@@ -1030,15 +1028,15 @@ Table of Contents
       The "STATUS" property parameter list for tasks is redefined by the
       addition of the values "PENDING" and "FAILED":
 
-      statvalue-todo  = "NEEDS-ACTION" ;Indicates to-do needs action.
-                      / "COMPLETED"    ;Indicates to-do completed.
-                      / "IN-PROCESS"   ;Indicates to-do in process of.
-                      / "CANCELLED"    ;Indicates to-do was cancelled.
-                      / "PENDING"      ;Indicates a to-do has been
-                                       ;created and accepted, but has
-                                       ; not yet started.
-                      / "FAILED"       ;Indicates to-do has failed.
-      ;Extended status values for "VTODO" calendar component.
+      statvalue-todo  = "NEEDS-ACTION" ; Indicates to-do needs action.
+                      / "COMPLETED"    ; Indicates to-do completed.
+                      / "IN-PROCESS"   ; Indicates to-do in process of.
+                      / "CANCELLED"    ; Indicates to-do was cancelled.
+                      / "PENDING"      ; Indicates a to-do has been
+                                       ;   created and accepted, but has
+                                       ;   not yet started.
+                      / "FAILED"       ; Indicates to-do has failed.
+      ; Extended status values for "VTODO" calendar component.
 
    Description:
       PENDING:  A to-do has been created and accepted but has not yet
@@ -1084,9 +1082,9 @@ Table of Contents
    Format Definition:
       This component is defined by the following notation:
 
-      statusc = "BEGIN" ":" "VSTATUS" CRLF
-                statusprop
-                "END" ":" "VSTATUS" CRLF
+      statusc        = "BEGIN" ":" "VSTATUS" CRLF
+                       statusprop
+                       "END" ":" "VSTATUS" CRLF
 
       statusprop     = *(
                      ;
@@ -1191,37 +1189,37 @@ Table of Contents
 
    IANA has added the following new iCalendar component to the
    "Components" registry defined in Section 8.3.1 of [RFC5545] and
-   located here: <https://www.iana.org/assignments/icalendar>.
+   located on <https://www.iana.org/assignments/icalendar>.
 
-            +===========+=========+==========================+
-            | Component | Status  | Reference                |
-            +===========+=========+==========================+
-            | VSTATUS   | Current | Section 12.1 of RFC XXXX |
-            +-----------+---------+--------------------------+
+            +===========+=========+===========================+
+            | Component | Status  | Reference                 |
+            +===========+=========+===========================+
+            | VSTATUS   | Current | Section 12.1 of RFC 10051 |
+            +-----------+---------+---------------------------+
 
-               Table 1: Addition to the Components Registry
+                Table 1: Addition to the Components Registry
 
 15.2.  Property Registrations
 
    IANA has added the following new iCalendar properties to the
    "Properties" registry defined in Section 8.3.2 of [RFC5545] and
-   located here: <https://www.iana.org/assignments/icalendar>.
+   located on <https://www.iana.org/assignments/icalendar>.
 
-        +====================+=========+==========================+
-        | Property           | Status  | Reference                |
-        +====================+=========+==========================+
-        | ESTIMATED-DURATION | Current | Section 10.1 of RFC XXXX |
-        +--------------------+---------+--------------------------+
-        | REASON             | Current | Section 10.2 of RFC XXXX |
-        +--------------------+---------+--------------------------+
-        | SUBSTATE           | Current | Section 10.3 of RFC XXXX |
-        +--------------------+---------+--------------------------+
-        | STATUS             | Current | Section 11.2 of RFC XXXX |
-        +--------------------+---------+--------------------------+
-        | TASK-MODE          | Current | Section 10.4 of RFC XXXX |
-        +--------------------+---------+--------------------------+
+       +====================+=========+===========================+
+       | Property           | Status  | Reference                 |
+       +====================+=========+===========================+
+       | ESTIMATED-DURATION | Current | Section 10.1 of RFC 10051 |
+       +--------------------+---------+---------------------------+
+       | REASON             | Current | Section 10.2 of RFC 10051 |
+       +--------------------+---------+---------------------------+
+       | SUBSTATE           | Current | Section 10.3 of RFC 10051 |
+       +--------------------+---------+---------------------------+
+       | STATUS             | Current | Section 11.2 of RFC 10051 |
+       +--------------------+---------+---------------------------+
+       | TASK-MODE          | Current | Section 10.4 of RFC 10051 |
+       +--------------------+---------+---------------------------+
 
-               Table 2: Additions to the Properties Registry
+              Table 2: Additions to the Properties Registry
 
 15.3.  STATUS Values Registry
 
@@ -1247,7 +1245,7 @@ Table of Contents
         +--------------+---------+-------------------------------+
         | DRAFT        | Current | Section 3.8.1.11 of [RFC5545] |
         +--------------+---------+-------------------------------+
-        | FAILED       | Current | Section 11.2 of RFC XXXX      |
+        | FAILED       | Current | Section 11.2 of RFC 10051     |
         +--------------+---------+-------------------------------+
         | FINAL        | Current | Section 3.8.1.11 of [RFC5545] |
         +--------------+---------+-------------------------------+
@@ -1255,7 +1253,7 @@ Table of Contents
         +--------------+---------+-------------------------------+
         | NEEDS-ACTION | Current | Section 3.8.1.11 of [RFC5545] |
         +--------------+---------+-------------------------------+
-        | PENDING      | Current | Section 11.2 of RFC XXXX      |
+        | PENDING      | Current | Section 11.2 of RFC 10051     |
         +--------------+---------+-------------------------------+
         | TENTATIVE    | Current | Section 3.8.1.11 of [RFC5545] |
         +--------------+---------+-------------------------------+
@@ -1275,18 +1273,18 @@ Table of Contents
    The initial contents of the "SUBSTATE Values" registry are as
    follows:
 
-            +===========+=========+==========================+
-            | Substate  | Status  | Reference                |
-            +===========+=========+==========================+
-            | OK        | Current | Section 10.3 of RFC XXXX |
-            +-----------+---------+--------------------------+
-            | ERROR     | Current | Section 10.3 of RFC XXXX |
-            +-----------+---------+--------------------------+
-            | SUSPENDED | Current | Section 10.3 of RFC XXXX |
-            +-----------+---------+--------------------------+
+            +===========+=========+===========================+
+            | Substate  | Status  | Reference                 |
+            +===========+=========+===========================+
+            | OK        | Current | Section 10.3 of RFC 10051 |
+            +-----------+---------+---------------------------+
+            | ERROR     | Current | Section 10.3 of RFC 10051 |
+            +-----------+---------+---------------------------+
+            | SUSPENDED | Current | Section 10.3 of RFC 10051 |
+            +-----------+---------+---------------------------+
 
-                Table 4: Initial Contents of the SUBSTATE
-                             Values Registry
+                 Table 4: Initial Contents of the SUBSTATE
+                              Values Registry
 
 15.5.  TASK-MODE Values Registry
 
@@ -1301,21 +1299,21 @@ Table of Contents
    The initial contents of the "TASK-MODE Values" registry are as
    follows:
 
-       +======================+=========+==========================+
-       | Task Mode            | Status  | Reference                |
-       +======================+=========+==========================+
-       | AUTOMATIC-COMPLETION | Current | Section 10.4 of RFC XXXX |
-       +----------------------+---------+--------------------------+
-       | AUTOMATIC-FAILURE    | Current | Section 10.4 of RFC XXXX |
-       +----------------------+---------+--------------------------+
-       | AUTOMATIC            | Current | Section 10.4 of RFC XXXX |
-       +----------------------+---------+--------------------------+
-       | CLIENT               | Current | Section 10.4 of RFC XXXX |
-       +----------------------+---------+--------------------------+
-       | SERVER               | Current | Section 10.4 of RFC XXXX |
-       +----------------------+---------+--------------------------+
+      +======================+=========+===========================+
+      | Task Mode            | Status  | Reference                 |
+      +======================+=========+===========================+
+      | AUTOMATIC-COMPLETION | Current | Section 10.4 of RFC 10051 |
+      +----------------------+---------+---------------------------+
+      | AUTOMATIC-FAILURE    | Current | Section 10.4 of RFC 10051 |
+      +----------------------+---------+---------------------------+
+      | AUTOMATIC            | Current | Section 10.4 of RFC 10051 |
+      +----------------------+---------+---------------------------+
+      | CLIENT               | Current | Section 10.4 of RFC 10051 |
+      +----------------------+---------+---------------------------+
+      | SERVER               | Current | Section 10.4 of RFC 10051 |
+      +----------------------+---------+---------------------------+
 
-         Table 5: Initial Contents of the TASK-MODE Values Registry
+        Table 5: Initial Contents of the TASK-MODE Values Registry
 
 15.6.  Participation Statuses Registry
 
@@ -1324,13 +1322,13 @@ Table of Contents
    [RFC5545] and located here: <https://www.iana.org/assignments/
    icalendar>.
 
-       +======================+=========+=========================+
-       | Participation Status | Status  | Reference               |
-       +======================+=========+=========================+
-       | FAILED               | Current | Section 9.1 of RFC XXXX |
-       +----------------------+---------+-------------------------+
+       +======================+=========+==========================+
+       | Participation Status | Status  | Reference                |
+       +======================+=========+==========================+
+       | FAILED               | Current | Section 9.1 of RFC 10051 |
+       +----------------------+---------+--------------------------+
 
-                 Table 6: Participation Statuses Registry
+                  Table 6: Participation Statuses Registry
 
 16.  References
 
