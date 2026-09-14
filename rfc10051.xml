@@ -13,25 +13,6 @@
     <title abbrev="Task Extensions to iCalendar">Task Extensions to iCalendar</title>
     <seriesInfo name="RFC" value="10051"/>
 
-<!--[rfced] Adrian, would you like to include the postal code 
-for your address?
-
-Current:
-   Adrian Apthorp
-   DHL Express
-   Fritz-Erler-Str. 5
-   Bonn
-   Germany
-   Email: adrian.apthorp@dhl.com
-
-Perhaps:
-   Adrian Apthorp
-   DHL Express
-   Fritz-Erler-Str. 5
-   53113 Bonn
-   Germany
-   Email: adrian.apthorp@dhl.com  
--->   
     <author fullname="Adrian Apthorp" surname="Apthorp" initials="A.">
       <organization>DHL Express</organization>
       <address>
@@ -60,25 +41,7 @@ Perhaps:
     <area>ART</area>
     <workgroup>calext</workgroup>
 
-<!-- [rfced] Please insert any keywords (beyond those that appear in
-the title) for use on https://www.rfc-editor.org/search. 
--->
-
-    <abstract><t>The Internet Calendaring and Scheduling Core Object Specification (iCalendar) (RFC 5545) "VTODO" calendar component has seen limited adoption and use, mainly for personal reminders and to-do lists.</t>
-
-<!--[rfced] We note that this document updates RFC 5545. Should this be mentioned in the
-Abstract per guidance at <https://authors.ietf.org/en/required-content#abstract>?
-      
-Original:
-   This document updates and defines extensions to VTODO to provide improved 
-   status tracking, scheduling and specification of tasks to allow its use 
-   in other contexts, such as process control and project management.
-
-Perhaps:
-   This document updates RFC 5545 and defines extensions to VTODO to provide 
-   improved status tracking, scheduling, and specification of tasks to allow 
-   its use in other contexts, such as process control and project management.
--->
+    <abstract><t>The "VTODO" calendar component in the Internet Calendaring and Scheduling Core Object Specification (iCalendar; RFC 5545) has seen limited adoption and use, mainly for personal reminders and to-do lists.</t>
 
 <t>This document updates and defines extensions to "VTODO" to provide improved status tracking, scheduling, and specification of tasks to allow its use in other contexts, such as process control and project management.</t>
 
@@ -116,9 +79,9 @@ Perhaps:
 
 <t>Calendaring and scheduling roles are referred to in quoted-strings of text with the first character of each word in uppercase.  For example, "Organizer" refers to the role of a "Calendar User" (CU) within the scheduling protocol.</t>
 
-<t>Calendar components defined by <xref target="RFC5545"/> and that update specifications are referred to with capitalized quoted-strings of text, followed by the words "calendar component".  For example, "VEVENT" calendar component refers to the event calendar component, "VTODO" calendar component refers to the to-do calendar component, and "VJOURNAL" calendar component refers to the daily journal calendar component.</t>
+<t>Calendar components defined by <xref target="RFC5545"/> and updating specifications are referred to with capitalized quoted-strings of text, followed by the words "calendar component".  For example, "VEVENT" calendar component refers to the event calendar component, "VTODO" calendar component refers to the to-do calendar component, and "VJOURNAL" calendar component refers to the daily journal calendar component.</t>
 
-<t>Scheduling methods are referred to with capitalized quoted-strings of text.  For example, "REQUEST" refers to the method for requesting a scheduling calendar component to be created or modified, and "REPLY" refers to the method the recipient of a request uses to update their status with the "Organizer" of the calendar component.</t>
+<t>Scheduling methods are referred to with capitalized quoted-strings of text.  For example, "REQUEST" refers to the method for requesting a scheduling calendar component be created or modified, and "REPLY" refers to the method the recipient of a request uses to update their status with the "Organizer" of the calendar component.</t>
 
 <t>Properties defined by <xref target="RFC5545"/> and updating specifications are referred to with capitalized quoted-strings of text, followed by the word "property".  For example, the "ATTENDEE" property refers to the iCalendar property used to convey the calendar address of a "Calendar User".</t>
 
@@ -131,31 +94,6 @@ Perhaps:
 <t anchor="terms">Terms defined and used in this specification include:</t>
 
 <dl spacing="normal">
-
-<!--[rfced] For consistency, we updated a few items within the list
-in Section 1.1 to reflect the abbreviation first and then the 
-expansion/definition. Please let us know of any objections.
-
-Also, please let us know if you would like the terms in this list 
-to be ordered alphabetically (i.e., reorder "Candidate" and 
-"Organizer").
-
-Original:
-   BPMS:  Business Process Management Software
-
-   Calendar User (CU):  A person or software system that accesses or 
-      modifies calendar information.
-
-   Calendar User Agent (CUA): This may be ...
-
-Current:
-   BPMS:  Business Process Management Software
-
-   CU:  Calendar User. A person or software system that accesses or 
-      modifies calendar information.
-
-   CUA: Calendar User Agent. This may be one of the following ...
--->  
 
 <dt>Assignee:</dt><dd><t>A calendar user assigned to perform a given task. An assignee is equivalent to an "Attendee" of a task.</t></dd>
 <dt>BPMS:</dt><dd><t>Business Process Management Software</t></dd>
@@ -237,40 +175,8 @@ Current:
 <dl spacing="normal" newline="true">
   <dt>Task Actors:</dt><dd><t>Various calendar users that may be involved in the monitoring or performing of a task. The set of actors includes Organizers, Observers, Resources, Assignees, and Candidates.</t></dd>
   <dt>Task Organizer:</dt><dd><t>The creator of a task who also determines task assignment and scheduling and monitors task progress.</t></dd>
-
-<!--[rfced] What does "it" refer to in this sentence? Please let us know how we 
-may rephrase for clarity.
-
-Original:
-   Task Domain Data:
-      This is any domain specific data that may be acted on or provides
-      context to it in performing a task.
-
-Perhaps:
-   Task Domain Data:
-      This is any domain-specific data that may be acted on or that provides
-      context for performing a task.
--->
-
   <dt>Task Domain Data:</dt><dd><t>This is any domain-specific data that may be acted on or provides context to it in performing a task.</t></dd>
   <dt>Task-Specific Application:</dt><dd><t>A task-specific application renders the data concerning the task (including task domain data) for presentation and manipulation by a task actor.</t></dd>
-
-<!--[rfced] May we update this sentence as shown below to clarify "or some other 
-status event occurring (or not) on the task"?
-
-Original:
-    Process Logic:
-      Determines under what conditions a task (or tasks) is generated
-      and the actions to take on completion, or some other status event
-      occurring (or not) on the task.
-
-Perhaps:
-    Process Logic:
-      Determines under what conditions one or more tasks are generated and 
-      the actions to take upon task completion or upon the occurrence 
-      (or non-occurrence) of some other status event.
--->
-
   <dt>Process Logic:</dt><dd><t>Determines under what conditions a task (or tasks) is generated and the actions to take on completion, or some other status event occurring (or not) on the task.</t></dd>
   <dt>Task Trigger:</dt><dd><t>An event that gives rise to the generation of a task according to Process Logic. Task triggers can come from many sources including, for example, a task being requested through the calendaring system or a status change in the progression of a business process being managed by a business process management or enterprise resource planning (ERP) system.</t></dd>
   <dt>Task Assignment Rules:</dt><dd><t>Govern how actors are assigned to a task. A range of different assignment patterns  <xref target="WfRP"/> may be considered, including the two general cases:</t>
@@ -280,18 +186,6 @@ Perhaps:
   </ol>
 <t>In either case, the assignment may be made based on a variety of criteria including, name, availability, skills, capacity, etc.</t></dd>
 <dt>Task Generating System:</dt><dd><t>A system that creates and assigns tasks in response to some initiating event (task trigger). 
-  
-<!--[rfced] May we rephrase the following sentence for easier readability 
-as shown below?
-
-Original:
-   Task creation is according to Process Logic with task assignment 
-   determined by Task Assignment Rules. 
-
-Perhaps:
-   Process Logic defines task creation, while Task Assignment Rules 
-   determine task assignment.
---> 
 
   Task creation is according to Process Logic with task assignment determined by Task Assignment Rules. This system also tracks the status of tasks and will initiate further actions based upon the status. A Task Generating System can take many forms, such as a Business Process Management System, Project Management System, Bug Tracking System, and Building Control System. A Task Generating System may also be a human. In iCalendar terms the Task Generating System is the organizer.</t>
 <t>Task creation, assignment, and tracking coordinated by a human organizer is a special case of a Task Generating System. In this case, Task Assignment Rules and Process Logic may be either explicit or tacit.</t></dd>
@@ -337,17 +231,6 @@ Perhaps:
 <section><name>Task Type</name>
 
 <t>The "CONCEPT" property <xref target="RFC9253"/> is used to identify the type of task, for example:</t>
-
-<!--[rfced] In the submitted XML file, many elements have anchor attributes set to long strings.  May these anchors be removed, or do they serve a purpose? They are generated as id attributes in the HTML output.
-
-Scope: There are over 300 of these in the submitted (and edited) XML file.
-
-For example, in XML:
-anchor="_731d7a28-4305-020e-132c-f33baa87a86a"
-
-In HTML:
-<div id="_731d7a28-4305-020e-132c-f33baa87a86a">
--->
 
 <sourcecode anchor="_731d7a28-4305-020e-132c-f33baa87a86a" type="text/calendar"><![CDATA[
 CONCEPT:http://example.com/task/delivery]]></sourcecode>
@@ -485,18 +368,6 @@ END:PARTICIPANT]]></sourcecode>
 
 <section><name>Task Alerts and Notifications</name>
 
-<!--[rfced] May we refer to alarms, escalations, and notifications as "mechanisms" 
-instead of "needs" for clarity?
-
-Original
-   Different needs to alert or notify task actors of pending or actual
-   task status changes are recognized:
-
-Perhaps:
-   This specification recognizes different mechanisms for alerting or notifying 
-   task actors about pending or actual task status changes.
--->  
-
 <t>Different needs to alert or notify task actors of pending or actual task status changes are recognized:</t>
 
 <dl spacing="normal" newline="true">
@@ -569,28 +440,6 @@ partprop =/ percent / ; OPTIONAL but MUST NOT occur more than once.
 
 <dl spacing="normal" newline="true">
   <dt>Format Definition:</dt><dd><t>This property parameter is redefined by the following notation, which adds the value "FAILED":</t>
-
-<!--[rfced] In Sections 9.1 and 11.2, there are similar ABNF rules. 
-The comments in Section 11.2 include "Indicates" and periods at 
-the end, but the comments in Section 9.1 do not. 
-Would you like these comments to be consistent by perhaps removing 
-the periods and instances of "Indicates" in Section 11.2? 
-(We have already added a space after the semicolon.) 
-
-Original:
-(Section 9.1)
-  partstat-todo   = ("NEEDS-ACTION" ; To-do needs action   
-
-(Section 11.2)        
-  statvalue-todo  = "NEEDS-ACTION"  ;Indicates to-do needs action. 
-
-Perhaps:
-(Section 9.1)
-  partstat-todo   = ("NEEDS-ACTION" ; To-do needs action 
-  
-(Section 11.2) 
-  statvalue-todo  = "NEEDS-ACTION"  ; To-do needs action  
--->
 
 <sourcecode anchor="_a94b0041-f547-287f-22c5-8be5027fd517" type="abnf"><![CDATA[
 partstat-todo    = ("NEEDS-ACTION"    ; To-do needs action
@@ -721,19 +570,6 @@ END:VSTATUS]]></sourcecode></dd>
   <dt>Purpose:</dt><dd><t>This property specifies automatic operations that servers acting on behalf of the organizer apply to tasks based on changes in attendee status (PARTSTAT).</t></dd>
   <dt>Value Type:</dt><dd><t>TEXT</t></dd>
   <dt>Property Parameters:</dt><dd><t>IANA and non-standard property parameters can be specified on this property.</t></dd>
-
-<!--[rfced] Please clarify "This property can be specified zero". Does this mean 
-"specified zero times"?
-
-Original:
-   This property can be specified zero or once in a "VTODO" 
-   calendar component.
-
-Current:
-   This property can be specified zero times or once in a "VTODO" 
-   calendar component.
--->
-
   <dt>Conformance:</dt><dd><t>This property can be specified zero or once in a "VTODO" calendar component.</t></dd>
   <dt>Format Definition:</dt><dd><t>This property is defined by the following notation:</t>
 
@@ -944,18 +780,6 @@ END:VSTATUS]]></sourcecode>
 <!-- PCDATA value: string - case insensitive but
 uppercase preferred -->]]></sourcecode>
 </dd>
-
-<!--[rfced] In Section 13.1, the first line within the sourcecode (under "Example") exceeds the character limit for source code elements. May the line be wrapped as follows or otherwise?
-
-Original:
-   Example:
-      <C:supported-task-mode-set xmlns:C="urn:ietf:params:xml:ns:caldav">
-
-Perhaps:
-   Example:
-      <C:supported-task-mode-set 
-        xmlns:C="urn:ietf:params:xml:ns:caldav">      
--->  
 
 <dt>Example:</dt>
 <dd>
@@ -1257,13 +1081,6 @@ Perhaps:
 	<refcontent>Version 2.0.2</refcontent>
       </reference>
 
-<!-- [rfced] FYI: We were unable to confirm the original author
-information for this reference. We have updated this reference to use
-"CalConnect" as the authoring organization based off the information
-found here: https://www.calconnect.org/resources/architectural-diagrams/.
-Please let us know of any objections.
--->
-
       <reference target="https://www.calconnect.org/docs/architectures/Task%20Architecture%201.0.pdf" anchor="TARCH">
 	<front> 
 	  <title>Task Architecture V 1.0</title>
@@ -1273,17 +1090,6 @@ Please let us know of any objections.
 	</front> 
       </reference>
 
-
-<!-- [rfced] FYI: We have updated this reference to match the
-citation format provided in the document (see "Citation format" on
-page 2 of [WsCalendar]).
-
-Current:
-  [WsCalendar]
-     "WS-Calendar Version 1.0", OASIS Committee Specification 01, 
-     30 July 2011, <https://docs.oasis-open.org/ws-calendar/
-     ws-calendar-spec/v1.0/cs01/ws-calendar-spec-v1.0-cs01.pdf>. 
--->
       <reference target="https://docs.oasis-open.org/ws-calendar/ws-calendar-spec/v1.0/cs01/ws-calendar-spec-v1.0-cs01.pdf" anchor="WsCalendar">
 	<front> 
 	  <title>WS-Calendar Version 1.0</title>
@@ -1311,14 +1117,6 @@ Current:
     <section anchor="appendix-a"><name>Examples of Task State Lifecycle</name>
 
 <section><name>Simple Case Status Change</name>
-
-<!--[rfced] FYI: We added the following introductory sentence to 
-Appendix A.1 since Appendices A.2 and A.3 had similar sentences.
-
-Current:
-   The following is an example of status changes when assigning 
-   and performing a task with one attendee.
--->  
 
 <t>The following is an example of status changes when assigning and performing a task with one attendee.</t>
 <table>
@@ -1536,53 +1334,6 @@ Current:
 
 <t>The authors would also like to thank CalConnect, the Calendaring and Scheduling Consortium, for advice with this specification.</t>
 </section>
-
-<!--[rfced] We note inconsistent use of double quotes and capitalization for several terms in the running text (e.g., appearing with vs. without double quotes, or mixed uppercase/lowercase). Please review and let us know if any updates are needed. 
-
-  - "Attendee" vs. attendee
-      [Note: Should these instances be made uppercase with or without quotes?
-       - every attendee has marked their own status ...
-       - attendee responses are processed ...
-       - with one attendee ...
-       - with two attendees (A1 and A2) ...]
-  
-  - "COMPLETED" vs. COMPLETED
-
-  - Observer vs. observer
-      [Note: Should this instance be uppercase?
-       - Task actors (observers) ...]
-
-  - "Organizer" vs. organizer
-  - "REASON" Property vs. REASON code
-  - "STATUS" property vs. STATUS property vs. Status property
-
-  - "SUBSTATE" vs. substate
-      [NOTE: Does this need an update:
-        - The substate property...]
-
-  - "to-do" vs. to-do 
-  - "VSTATUS" vs. VSTATUS
--->
-
-<!--[rfced] FYI: We have added an expansion for the following
-abbreviation per Section 3.6 of RFC 7322 ("RFC Style Guide").
-Please review this and each expansion in the document
-carefully to ensure correctness. 
-
- Business Process Model and Notation (BPMN) 
--->
-
-<!-- [rfced] Please review the "Inclusive Language" portion of the online 
-Style Guide <https://www.rfc-editor.org/styleguide/part2/#inclusive_language>
-and let us know if any changes are needed.  Updates of this nature typically
-result in more precise language, which is helpful for readers.
-
-For example, please consider whether "traditional" should be updated for clarity.  
-While the NIST website 
-<https://web.archive.org/web/20250214092458/https://www.nist.gov/nist-research-library/nist-technical-series-publications-author-instructions#table1>
-indicates that this term is potentially biased, it is also ambiguous.  
-"Tradition" is a subjective term, as it is not the same for everyone.
--->
 
   </back>
 </rfc>
