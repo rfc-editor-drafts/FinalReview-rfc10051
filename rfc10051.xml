@@ -10,7 +10,7 @@
 <rfc xmlns:xi="http://www.w3.org/2001/XInclude" docName="draft-ietf-calext-ical-tasks-17" number="10051" category="std" ipr="trust200902" consensus="true" updates="5545" obsoletes="" symRefs="true" sortRefs="true" tocInclude="true" submissionType="IETF" xml:lang="en" version="3" >
 
   <front>
-    <title abbrev="Task Extensions to iCalendar">Task Extensions to iCalendar</title>
+    <title>Task Extensions to iCalendar</title>
     <seriesInfo name="RFC" value="10051"/>
 
     <author fullname="Adrian Apthorp" surname="Apthorp" initials="A.">
