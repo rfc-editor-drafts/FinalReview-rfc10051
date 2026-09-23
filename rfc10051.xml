@@ -668,14 +668,14 @@ TASK-MODE:SERVER]]></sourcecode>
   <dt>Format Definition:</dt><dd><t>The "STATUS" property parameter list for tasks is redefined by the addition of the values "PENDING" and "FAILED":</t>
 
 <sourcecode type="abnf"><![CDATA[
-statvalue-todo  = "NEEDS-ACTION" ; Indicates to-do needs action.
-                / "COMPLETED"    ; Indicates to-do completed.
-                / "IN-PROCESS"   ; Indicates to-do in process of.
-                / "CANCELLED"    ; Indicates to-do was cancelled.
-                / "PENDING"      ; Indicates a to-do has been
-                                 ;   created and accepted, but has
-                                 ;   not yet started.
-                / "FAILED"       ; Indicates to-do has failed.
+statvalue-todo  = "NEEDS-ACTION" ; To-do needs action.
+                / "COMPLETED"    ; To-do completed.
+                / "IN-PROCESS"   ; To-do in process of.
+                / "CANCELLED"    ; To-do was cancelled.
+                / "PENDING"      ; A to-do has been
+                                 ;   created and accepted, but
+                                 ;   has not yet started.
+                / "FAILED"       ; To-do has failed.
 ; Extended status values for "VTODO" calendar component.
 ]]></sourcecode></dd>
 
