@@ -368,7 +368,7 @@ END:PARTICIPANT]]></sourcecode>
 
 <section><name>Task Alerts and Notifications</name>
 
-<t>Different needs to alert or notify task actors of pending or actual task status changes are recognized:</t>
+<t>Different requirements to alert or notify task actors of pending or actual task status changes are recognized:</t>
 
 <dl spacing="normal" newline="true">
   <dt>Alarms:</dt>
