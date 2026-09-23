@@ -232,7 +232,7 @@ Process Logic defines task creation, while Task Assignment Rules determine task 
 
 <t>The "CONCEPT" property <xref target="RFC9253"/> is used to identify the type of task, for example:</t>
 
-<sourcecode anchor="_731d7a28-4305-020e-132c-f33baa87a86a" type="text/calendar"><![CDATA[
+<sourcecode type="text/calendar"><![CDATA[
 CONCEPT:http://example.com/task/delivery]]></sourcecode>
 
 </section>
@@ -241,7 +241,7 @@ CONCEPT:http://example.com/task/delivery]]></sourcecode>
 
 <t>The "LINK" property <xref target="RFC9253"/> specifies a link to external information, which may provide context for the task. For example:</t>
 
-<sourcecode anchor="_5ac91d61-0b7c-87b6-2ca4-a96794bc8689" type="text/calendar"><![CDATA[
+<sourcecode type="text/calendar"><![CDATA[
 LINK;LINKREL=describedby;VALUE=URI:
  mid:752142.141482.307E5@mx123.example.com]]></sourcecode>
 
@@ -252,21 +252,21 @@ LINK;LINKREL=describedby;VALUE=URI:
 
 <t>Note: The link relations below are for illustration only.</t>
 
-<sourcecode anchor="_f6042f19-0180-488d-6b26-45f762a65470" type="text/calendar"><![CDATA[
+<sourcecode type="text/calendar"><![CDATA[
 LINK;LINKREL="vacation-system";VALUE=URI:
  http://example.com/vacation-approval?id=1234]]></sourcecode>
 
 
 <t>Additionally, it might be used to link data specific to the task, for example, an electronic copy of a signature taken to confirm delivery of a package.</t>
 
-<sourcecode anchor="_9db0c327-9312-773e-b91b-dbcae0413cba" type="text/calendar"><![CDATA[
+<sourcecode type="text/calendar"><![CDATA[
 LINK;LINKREL="electronic-signature";VALUE=URI:
  http://example.com/delivery/sig1234.jpg]]></sourcecode>
 
 
 <t>The "REFID" property <xref target="RFC9253"/> is used to identify a key used to group tasks by that key.</t>
 
-<sourcecode anchor="_2dcd158c-e800-c236-2ccb-94ab9be64865" type="text/calendar"><![CDATA[
+<sourcecode type="text/calendar"><![CDATA[
 REFID:Manhattan
 
 REFID:1234567890]]></sourcecode>
@@ -301,7 +301,7 @@ REFID:1234567890]]></sourcecode>
 
 <t>This document defines a new "VSTATUS" calendar component (see <xref target="vstatus"/>) that can be used to group related information about the status of the task. This might include information on why (the "REASON" property) and when (the "DTSTAMP" property) a status has changed. In addition, new status values are specified to provide for task suspension, failure, and preparation.</t>
 
-<sourcecode anchor="_b433d2bd-3e8b-2bc4-5c65-79a9d2f41b2a" type="text/calendar"><![CDATA[
+<sourcecode type="text/calendar"><![CDATA[
 BEGIN:VSTATUS
 STATUS:FAILED
 REASON:https://example.com/reason/delivery-failed
@@ -316,7 +316,7 @@ END:VSTATUS]]></sourcecode>
 
 <t>Multiple comments and reasons may have the same status. As situations change, further "VSTATUS" calendar components can be added to provide additional information.</t>
 
-<sourcecode anchor="_7e3b31f1-1246-0deb-6d39-1d7745eecf65" type="text/calendar"><![CDATA[
+<sourcecode type="text/calendar"><![CDATA[
 CONCEPT:https://example.com/task/delivery
 BEGIN:VSTATUS
 STATUS:FAILED
@@ -354,7 +354,7 @@ END:VSTATUS]]></sourcecode>
 
 <t>The "PARTICIPANT" calendar component <xref target="RFC9073"/> can be used to provide additional information about why an "ATTENDEE" property's participation status has changed, by following the guidelines set out in <xref target="RFC9073" section="7.1"/>. The "COMMENT" property can also be used to include additional human-readable information about why the associated "STATUS" or "ATTENDEE" property changed. For example, if a driver failed to deliver a package because of a puncture, it might be expressed as</t>
 
-<sourcecode anchor="_23b7c20e-016c-9144-b19f-bd57da383762" type="text/calendar"><![CDATA[
+<sourcecode type="text/calendar"><![CDATA[
 ATTENDEE;PARTSTAT=FAILED:mailto:xxx@example.com
 ...
 BEGIN:PARTICIPANT
@@ -392,7 +392,7 @@ END:PARTICIPANT]]></sourcecode>
 
 <t>The following changes to the syntax defined in iCalendar <xref target="RFC5545"/> and Event Publishing Extensions to iCalendar  <xref target="RFC9073"/> are made here. New elements are defined in subsequent sections.</t>
 
-<sourcecode anchor="_dc8e734a-43db-ac37-6326-a7f76625fe5b" type="abnf"><![CDATA[
+<sourcecode type="abnf"><![CDATA[
 ; Addition of VSTATUS as a valid component for VEVENT
 eventc     = "BEGIN" ":" "VEVENT" CRLF
              eventprop *alarmc *participantc *locationc
@@ -441,7 +441,7 @@ partprop =/ percent / ; OPTIONAL but MUST NOT occur more than once.
 <dl spacing="normal" newline="true">
   <dt>Format Definition:</dt><dd><t>This property parameter is redefined by the following notation, which adds the value "FAILED":</t>
 
-<sourcecode anchor="_a94b0041-f547-287f-22c5-8be5027fd517" type="abnf"><![CDATA[
+<sourcecode type="abnf"><![CDATA[
 partstat-todo    = ("NEEDS-ACTION"    ; To-do needs action
                  / "ACCEPTED"         ; To-do accepted
                  / "DECLINED"         ; To-do declined
@@ -463,7 +463,7 @@ partstat-todo    = ("NEEDS-ACTION"    ; To-do needs action
 
 <dt>Example:</dt>
 
-<dd><sourcecode anchor="_68f46db8-8cd0-e024-9e2b-04787ce77a2c" type="text/calendar"><![CDATA[
+<dd><sourcecode type="text/calendar"><![CDATA[
 ATTENDEE;REASON="https://example.com/reason/not-enough-time";
  PARTSTAT=FAILED:mailto:jsmith@example.com]]></sourcecode></dd>
 </dl>
@@ -482,7 +482,7 @@ ATTENDEE;REASON="https://example.com/reason/not-enough-time";
   <dt>Conformance:</dt><dd><t>This property can be specified in "VTODO" calendar components.</t></dd>
   <dt>Format Definition:</dt><dd><t>This property is defined by the following notation:</t>
 
-<sourcecode anchor="_33c0a4d8-a6bf-c705-a44a-e4155f8c3f06" type="abnf"><![CDATA[
+<sourcecode type="abnf"><![CDATA[
 est-duration  = "ESTIMATED-DURATION" durparam ":" dur-value CRLF
                 ;consisting of a positive duration of time.
 
@@ -491,7 +491,7 @@ durparam      = *(";" other-param)]]></sourcecode></dd>
   <dt>Description:</dt><dd><t>In a "VTODO" calendar component the property <bcp14>MAY</bcp14> be used to specify the estimated duration for the to-do, with or without an explicit time window in which the event should be started and completed. When present, the "DTSTART" and "DUE" or "DTSTART" and "DURATION" properties represent the window in which the task can be performed. The "ESTIMATED-DURATION" property <bcp14>SHOULD</bcp14> be passed from the organizer to the "Attendee" in iTIP  <xref target="RFC5546"/> messages.</t></dd>
   <dt>Example:</dt><dd><t>The following example illustrates how this property is used to estimate a task duration of one hour:</t>
 
-<sourcecode anchor="_9b05f53d-1c29-c292-1813-bad702a9aeb9" type="text/calendar"><![CDATA[
+<sourcecode type="text/calendar"><![CDATA[
 ESTIMATED-DURATION:PT1H]]></sourcecode></dd>
 </dl>
 </section>
@@ -506,7 +506,7 @@ ESTIMATED-DURATION:PT1H]]></sourcecode></dd>
 <dt>Conformance:</dt><dd><t>This property can be specified in "VSTATUS" and "PARTICIPANT" calendar components.</t></dd>
 <dt>Format Definition:</dt><dd><t>This property is defined by the following notation:</t>
 
-<sourcecode anchor="_ae8e4206-9333-e7f4-96b4-ce92d2595eb0" type="abnf"><![CDATA[
+<sourcecode type="abnf"><![CDATA[
 reason      = "REASON" reasonparam ":" uri CRLF
 
 reasonparam = *(";" other-param)]]></sourcecode></dd>
@@ -514,7 +514,7 @@ reasonparam = *(";" other-param)]]></sourcecode></dd>
   <dt>Description:</dt><dd><t>This property allows a change in task or participant status to be qualified with a codified reason. Typically, reasons are defined within the context of the task type and therefore <bcp14>SHOULD</bcp14> include the name-space of the authority defining the task.</t></dd>
   <dt>Example:</dt>
 
-<dd><sourcecode anchor="_e6e8329f-2f53-d95b-f684-b559638b5f76" type="text/calendar"><![CDATA[
+<dd><sourcecode type="text/calendar"><![CDATA[
 REASON:https://example.com/reason/delivered-on-time]]></sourcecode></dd>
 </dl>
 
@@ -530,7 +530,7 @@ REASON:https://example.com/reason/delivered-on-time]]></sourcecode></dd>
   <dt>Conformance:</dt><dd><t>This property can be specified in a "VSTATUS" calendar component.</t></dd>
   <dt>Format Definition:</dt><dd><t>This property is defined by the following notation:</t>
 
-<sourcecode anchor="_55dd5ba1-0cdb-51b9-60f2-02c13d3f51f3" type="abnf"><![CDATA[
+<sourcecode type="abnf"><![CDATA[
 substate         = "SUBSTATE" substateparam ":" substatevalue CRLF
 
 substateparam    = *(";" other-param)
@@ -548,7 +548,7 @@ substatevalue    = ("OK"        ; everything is fine (the default)
   <dt>Description:</dt><dd><t>The substate property allows additional qualification and granularity of states to be recorded, in particular for the IN-PROCESS state. It allows individual substates to be recorded without the need to define and publish a subtask associated with a parent task purely to track that a particular state has been reached. This property also allows parallel states to be expressed, such as indicating that a task has been suspended at whatever state it has reached.</t></dd>
 <dt>Example:</dt>
 
-<dd><sourcecode anchor="_0675eed9-650f-1856-bdba-93d21e4a73ef" type="text/calendar"><![CDATA[
+<dd><sourcecode type="text/calendar"><![CDATA[
 BEGIN:VSTATUS
 STATUS:FAILED
 REASON:https://example.com/reason/no-one-home
@@ -573,7 +573,7 @@ END:VSTATUS]]></sourcecode></dd>
   <dt>Conformance:</dt><dd><t>This property can be specified zero or once in a "VTODO" calendar component.</t></dd>
   <dt>Format Definition:</dt><dd><t>This property is defined by the following notation:</t>
 
-<sourcecode anchor="_3583f76a-06f6-d3e3-1c51-557306e3b8de" type="abnf"><![CDATA[
+<sourcecode type="abnf"><![CDATA[
 task-mode   = "TASK-MODE" taskmodeparam ":"
                  ("AUTOMATIC-COMPLETION"
                  / "AUTOMATIC-FAILURE"
@@ -611,7 +611,7 @@ taskmodeparam      = *(";" other-param)]]></sourcecode></dd>
 </dd>
 <dt>Examples:</dt><dd>
 
-<sourcecode anchor="_a9ebce77-a0cb-aec9-f88c-c15279a2883a" type="text/calendar"><![CDATA[
+<sourcecode type="text/calendar"><![CDATA[
 TASK-MODE:AUTOMATIC-COMPLETION
 TASK-MODE:AUTOMATIC-FAILURE
 TASK-MODE:SERVER]]></sourcecode>
@@ -627,8 +627,7 @@ TASK-MODE:SERVER]]></sourcecode>
 
 <t>OLD TEXT:</t>
 
-<sourcecode anchor="_179e7116-bf33-cf5e-0666-b3a628f9949c"
-type=""><![CDATA[
+<sourcecode type=""><![CDATA[
 ; Either 'due' or 'duration' MAY appear in
 ; a 'todoprop', but 'due' and 'duration'
 ; MUST NOT occur in the same 'todoprop'.
@@ -638,8 +637,7 @@ type=""><![CDATA[
 
 <t>NEW TEXT:</t>
 
-<sourcecode anchor="_8e3c0db6-d70e-2d60-b4c5-7e98a735a6bf"
-type=""><![CDATA[
+<sourcecode type=""><![CDATA[
 ; Either 'due' or 'duration' MAY appear in
 ; a 'todoprop', but 'due' and 'duration'
 ; MUST NOT occur in the same 'todoprop'.]]></sourcecode>
@@ -669,7 +667,7 @@ type=""><![CDATA[
 <dl spacing="normal" newline="true">
   <dt>Format Definition:</dt><dd><t>The "STATUS" property parameter list for tasks is redefined by the addition of the values "PENDING" and "FAILED":</t>
 
-<sourcecode anchor="_c5ffbc6c-4ec8-420c-44e8-31768639d493" type="abnf"><![CDATA[
+<sourcecode type="abnf"><![CDATA[
 statvalue-todo  = "NEEDS-ACTION" ; Indicates to-do needs action.
                 / "COMPLETED"    ; Indicates to-do completed.
                 / "IN-PROCESS"   ; Indicates to-do in process of.
@@ -692,7 +690,7 @@ statvalue-todo  = "NEEDS-ACTION" ; Indicates to-do needs action.
     </dl>
   </dd>
 <dt>Example:</dt><dd><t>The following is an example of this property for a "VTODO" calendar component:</t>
-<sourcecode anchor="_6bbced25-cd65-6864-be7d-fd91c68f6b4b" type="text/calendar"><![CDATA[
+<sourcecode type="text/calendar"><![CDATA[
 STATUS:FAILED]]></sourcecode></dd>
 </dl>
 
@@ -716,7 +714,7 @@ STATUS:FAILED]]></sourcecode></dd>
 <dl spacing="normal" newline="true">
   <dt>Format Definition:</dt><dd><t>This component is defined by the following notation:</t>
 
-<sourcecode anchor="_c3556a5c-8c21-d81e-0446-4993b07dcbe7" type="abnf"><![CDATA[
+<sourcecode type="abnf"><![CDATA[
 statusc        = "BEGIN" ":" "VSTATUS" CRLF
                  statusprop
                  "END" ":" "VSTATUS" CRLF
@@ -742,7 +740,7 @@ statusprop     = *(
 ]]></sourcecode></dd>
 
 <dt>Examples:</dt><dd>
-<sourcecode anchor="_99859d3e-cee5-9d2e-2453-878785931d10" type="text/calendar"><![CDATA[
+<sourcecode type="text/calendar"><![CDATA[
 BEGIN:VSTATUS
 STATUS:COMPLETED
 REASON: https://example.com/reason/delivered-on-time
@@ -774,7 +772,7 @@ END:VSTATUS]]></sourcecode>
 <dt>Protected:</dt><dd><t>This property <bcp14>MUST</bcp14> be protected and <bcp14>SHOULD NOT</bcp14> be returned by a PROPFIND allprop request (as defined in <xref target="RFC4918" section="14.2"/>).</t></dd>
 <dt>Description:</dt><dd><t>See above.</t></dd>
 <dt>Definition:</dt><dd>
-<sourcecode anchor="_36db0948-931d-f34d-c6c0-8513e8918f97" type="dtd"><![CDATA[
+<sourcecode type="dtd"><![CDATA[
 <!ELEMENT supported-task-mode-set(supported-task-mode*)>
 <!ELEMENT supported-task-mode (#PCDATA)>
 <!-- PCDATA value: string - case insensitive but
@@ -783,7 +781,7 @@ uppercase preferred -->]]></sourcecode>
 
 <dt>Example:</dt>
 <dd>
-<sourcecode anchor="_94b82d9c-faf0-71ad-9d57-353cf89e383d" type="xml"><![CDATA[
+<sourcecode type="xml"><![CDATA[
 <C:supported-task-mode-set xmlns:C="urn:ietf:params:xml:ns:caldav">
   <C:supported-task-mode>AUTOMATIC</C:supported-task-mode>
   <C:supported-task-mode>SERVER</C:supported-task-mode>
