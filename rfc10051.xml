@@ -774,7 +774,7 @@ END:VSTATUS]]></sourcecode>
 <dt>Protected:</dt><dd><t>This property <bcp14>MUST</bcp14> be protected and <bcp14>SHOULD NOT</bcp14> be returned by a PROPFIND allprop request (as defined in <xref target="RFC4918" section="14.2"/>).</t></dd>
 <dt>Description:</dt><dd><t>See above.</t></dd>
 <dt>Definition:</dt><dd>
-<sourcecode anchor="_36db0948-931d-f34d-c6c0-8513e8918f97" type="xml"><![CDATA[
+<sourcecode anchor="_36db0948-931d-f34d-c6c0-8513e8918f97" type="dtd"><![CDATA[
 <!ELEMENT supported-task-mode-set(supported-task-mode*)>
 <!ELEMENT supported-task-mode (#PCDATA)>
 <!-- PCDATA value: string - case insensitive but
