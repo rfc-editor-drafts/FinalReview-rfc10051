@@ -177,7 +177,7 @@
   <dt>Task Organizer:</dt><dd><t>The creator of a task who also determines task assignment and scheduling and monitors task progress.</t></dd>
   <dt>Task Domain Data:</dt><dd><t>This is any domain-specific data that may be acted on or that provides context for performing a task.</t></dd>
   <dt>Task-Specific Application:</dt><dd><t>A task-specific application renders the data concerning the task (including task domain data) for presentation and manipulation by a task actor.</t></dd>
-  <dt>Process Logic:</dt><dd><t>Determines under what conditions a task (or tasks) is generated and the actions to take on completion, or some other status event occurring (or not) on the task.</t></dd>
+  <dt>Process Logic:</dt><dd><t>Determines under what conditions one or more tasks are generated and the actions to take upon task completion or upon the occurrence (or non-occurrence) of some other status event.</t></dd>
   <dt>Task Trigger:</dt><dd><t>An event that gives rise to the generation of a task according to Process Logic. Task triggers can come from many sources including, for example, a task being requested through the calendaring system or a status change in the progression of a business process being managed by a business process management or enterprise resource planning (ERP) system.</t></dd>
   <dt>Task Assignment Rules:</dt><dd><t>Govern how actors are assigned to a task. A range of different assignment patterns  <xref target="WfRP"/> may be considered, including the two general cases:</t>
   <ol type="a">
