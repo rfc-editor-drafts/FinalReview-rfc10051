@@ -782,7 +782,8 @@ uppercase preferred -->]]></sourcecode>
 <dt>Example:</dt>
 <dd>
 <sourcecode type="xml"><![CDATA[
-<C:supported-task-mode-set xmlns:C="urn:ietf:params:xml:ns:caldav">
+<C:supported-task-mode-set 
+   xmlns:C="urn:ietf:params:xml:ns:caldav">
   <C:supported-task-mode>AUTOMATIC</C:supported-task-mode>
   <C:supported-task-mode>SERVER</C:supported-task-mode>
   <C:supported-task-mode>CLIENT</C:supported-task-mode>
