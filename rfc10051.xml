@@ -574,7 +574,7 @@ END:VSTATUS]]></sourcecode></dd>
   <dt>Format Definition:</dt><dd><t>This property is defined by the following notation:</t>
 
 <sourcecode anchor="_3583f76a-06f6-d3e3-1c51-557306e3b8de" type="abnf"><![CDATA[
-task-mode   = "TASK-MODE taskmodeparam ":"
+task-mode   = "TASK-MODE" taskmodeparam ":"
                  ("AUTOMATIC-COMPLETION"
                  / "AUTOMATIC-FAILURE"
                  / "AUTOMATIC"
