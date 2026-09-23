@@ -570,7 +570,7 @@ END:VSTATUS]]></sourcecode></dd>
   <dt>Purpose:</dt><dd><t>This property specifies automatic operations that servers acting on behalf of the organizer apply to tasks based on changes in attendee status (PARTSTAT).</t></dd>
   <dt>Value Type:</dt><dd><t>TEXT</t></dd>
   <dt>Property Parameters:</dt><dd><t>IANA and non-standard property parameters can be specified on this property.</t></dd>
-  <dt>Conformance:</dt><dd><t>This property can be specified zero or once in a "VTODO" calendar component.</t></dd>
+  <dt>Conformance:</dt><dd><t>This property can be specified zero times or once in a "VTODO" calendar component.</t></dd>
   <dt>Format Definition:</dt><dd><t>This property is defined by the following notation:</t>
 
 <sourcecode type="abnf"><![CDATA[
