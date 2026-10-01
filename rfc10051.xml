@@ -53,14 +53,14 @@
 
 <t>This document specifies extensions to the Internet Calendaring and Scheduling Core Object Specification (iCalendar) <xref target="RFC5545"/> and associated protocols in order to enhance the structured communication and execution of tasks. The enhancements allow for the communication, time planning, and scheduling of tasks by and between automated systems (e.g., taxi dispatch systems, smart power grids <xref target="WsCalendar"/>, and business process management systems), as well as for human-centered tasks.</t>
 
-<t>A "task" is a representation of an item of work assigned to an individual or organization. In the iCalendar Object Model <xref target="RFC5545"/> the representation of tasks is by "VTODO" calendar components. Tasks can be identified in a number of situations, either informally as ad hoc tasks in personal "to-do" lists or more formally in business processes (ranging from repetitive workflows to adaptive cases and trouble ticketing) and project management (whether for large-scale construction projects or collaborative software development).</t>
+<t>A "task" is a representation of an item of work assigned to an individual or organization. In the iCalendar Object Model <xref target="RFC5545"/> the representation of tasks is by "VTODO" calendar components. Tasks can be identified in a number of situations, either informally as ad hoc tasks in personal to-do lists or more formally in business processes (ranging from repetitive workflows to adaptive cases and trouble ticketing) and project management (whether for large-scale construction projects or collaborative software development).</t>
 
 <t>The extensions specified in this document enhance and standardize the following:</t>
 
 <ul>
   <li>The specification of tasks: How a task type is defined and the relationships between tasks; see <xref target="task-specification"/>.</li>
   <li>Task planning and scheduling: Improved specification of deadlines and estimated time for completion; see <xref target="deadlines"/>.</li>
-  <li>Task assignment and status reporting: The addition of VSTATUS (<xref target="modifications-to-calendar-components"/>) allows for more detailed reports; see <xref target="status-reporting"/>.</li>
+  <li>Task assignment and status reporting: The addition of "VSTATUS" (<xref target="modifications-to-calendar-components"/>) allows for more detailed reports; see <xref target="status-reporting"/>.</li>
 </ul>
 
 <t>These extensions are defined within the context of an overall architecture for task calendaring and scheduling, which elaborates that supported by <xref target="RFC5545"/> and related standards.</t>
@@ -187,8 +187,8 @@
 <t>In either case, the assignment may be made based on a variety of criteria including, name, availability, skills, capacity, etc.</t></dd>
 <dt>Task Generating System:</dt><dd><t>A system that creates and assigns tasks in response to some initiating event (task trigger). 
 
-Process Logic defines task creation, while Task Assignment Rules determine task assignment. This system also tracks the status of tasks and will initiate further actions based upon the status. A Task Generating System can take many forms, such as a Business Process Management System, Project Management System, Bug Tracking System, and Building Control System. A Task Generating System may also be a human. In iCalendar terms the Task Generating System is the organizer.</t>
-<t>Task creation, assignment, and tracking coordinated by a human organizer is a special case of a Task Generating System. In this case, Task Assignment Rules and Process Logic may be either explicit or tacit.</t></dd>
+Process Logic defines task creation, while Task Assignment Rules determine task assignment. This system also tracks the status of tasks and will initiate further actions based upon the status. A Task Generating System can take many forms, such as a Business Process Management System, Project Management System, Bug Tracking System, and Building Control System. A Task Generating System may also be a human. In iCalendar terms the Task Generating System is the "Organizer".</t>
+<t>Task creation, assignment, and tracking coordinated by a human "Organizer" is a special case of a Task Generating System. In this case, Task Assignment Rules and Process Logic may be either explicit or tacit.</t></dd>
 <dt>Calendar and Scheduling System:</dt><dd><t>A software system that stores, publishes, and synchronizes calendar data such as events, tasks, and journal entries for actors. In the context of tasks, this includes schedules (i.e., allocated time and availability to perform tasks) and task lists. A calendar and scheduling system typically consists of server and client software components.</t>
 </dd>
 </dl>
@@ -219,7 +219,7 @@ Process Logic defines task creation, while Task Assignment Rules determine task 
 </section>
     <section anchor="task-specification"><name>Task Specification</name>
 
-<t>The specification of tasks must be semantically explicit in order for them to be managed within the context of a business process or project and understood by both humans and IT systems. The "VTODO" calendar component <xref target="RFC5545"/> only provides for simple ad hoc tasks or "to-do" lists and is therefore extended by this specification as follows:</t>
+<t>The specification of tasks must be semantically explicit in order for them to be managed within the context of a business process or project and understood by both humans and IT systems. The "VTODO" calendar component <xref target="RFC5545"/> only provides for simple ad hoc tasks or to-do lists and is therefore extended by this specification as follows:</t>
 
 <dl spacing="normal" newline="true">
   <dt>Task Type:</dt><dd><t>Explicitly what type of task is to be performed is identified.</t></dd>
@@ -291,7 +291,7 @@ REFID:1234567890]]></sourcecode>
 
 <t>Tasks are assigned to actors using one or more "ATTENDEE" properties <xref target="RFC5545"/> and/or one or more  "PARTICIPANT" calendar components <xref target="RFC9073"/>, as described in <xref target="attendee-participant"/>.</t>
 
-<t>Communication of task assignment or delegation to one or more actors who are allocated to a task by the organizer is directly supported by iTIP, i.e., all included "ATTENDEE" properties in an iTIP "REQUEST" are expected to perform the task.</t>
+<t>Communication of task assignment or delegation to one or more actors who are allocated to a task by the "Organizer" is directly supported by iTIP, i.e., all included "ATTENDEE" properties in an iTIP "REQUEST" are expected to perform the task.</t>
 
 <t>The offering or advertising of a task to one or more (potential) actors where only one or a subset of the candidates may accept the task will be addressed by a later specification.</t>
 </section>
@@ -345,9 +345,9 @@ END:VSTATUS]]></sourcecode>
 
 <t>Only the Task Organizer, or the server acting as the Organizer's proxy, may change or add "VSTATUS" calendar components and the "STATUS" property.</t>
 
-<t>The overall VSTATUS will be changed in response to incoming Attendee replies. Each change of the overall VSTATUS <bcp14>MUST</bcp14> be accompanied by a change to the STATUS.</t>
+<t>The overall "VSTATUS" will be changed in response to incoming "Attendee" replies. Each change of the overall "VSTATUS" <bcp14>MUST</bcp14> be accompanied by a change to the STATUS.</t>
 
-<t>Note there is no defined ordering of properties and components so the DTSTAMP property <bcp14>SHOULD</bcp14> be set for each VSTATUS component to preserve ordering.</t>
+<t>Note there is no defined ordering of properties and components so the DTSTAMP property <bcp14>SHOULD</bcp14> be set for each "VSTATUS" component to preserve ordering.</t>
 </section>
 
 <section anchor="attendee-participant"><name>Relating Reason and Comments to "ATTENDEE" Property Status Changes</name>
@@ -373,13 +373,13 @@ END:PARTICIPANT]]></sourcecode>
 <dl spacing="normal" newline="true">
   <dt>Alarms:</dt>
   <dd><t>"VALARM" calendar components operate in the calendar user agent space to notify the task actor of a pending task state for a task they are assigned to or are interested in.</t>
-  <t>Current standards (such as <xref target="RFC9074"/>) indicate that "VALARM" calendar components <bcp14>SHOULD</bcp14> be removed from incoming data, and many systems in fact do so. In a task assignment scenario, it may be appropriate for the organizer to be able to set alarms for the participants. A system implementing these standards may choose to preserve "VALARM" calendar components, but sending a task via some external service may result in their removal. This issue is not addressed by this specification.</t>
+  <t>Current standards (such as <xref target="RFC9074"/>) indicate that "VALARM" calendar components <bcp14>SHOULD</bcp14> be removed from incoming data, and many systems in fact do so. In a task assignment scenario, it may be appropriate for the "Organizer" to be able to set alarms for the participants. A system implementing these standards may choose to preserve "VALARM" calendar components, but sending a task via some external service may result in their removal. This issue is not addressed by this specification.</t>
   </dd>
   <dt>Escalations:</dt>
   <dd><t>An escalation or notification to the "Attendee", "Organizer", or other task actor may be required if a deadline associated with a task is exceeded or for some other reason. Process Logic identifying when and who to propagate escalations is the responsibility of the Task Generating System, e.g., a BPMS.</t>
   </dd>
   <dt>Notifications:</dt>
-  <dd><t>Task actors (observers) not directly involved in performing a task but that have a known interest in a given task's status can be identified by the "PARTICIPANT" calendar component <xref target="RFC9073"/> against certain components, e.g., the "VALARM" calendar component, to identify which task events the stakeholder/party is interested in. Notifications on shared calendars will allow task actors to register an interest in changes to tasks within a calendar (see  <xref target="appendix-a"/>).</t></dd>
+  <dd><t>Task actors (Observers) not directly involved in performing a task but that have a known interest in a given task's status can be identified by the "PARTICIPANT" calendar component <xref target="RFC9073"/> against certain components, e.g., the "VALARM" calendar component, to identify which task events the stakeholder/party is interested in. Notifications on shared calendars will allow task actors to register an interest in changes to tasks within a calendar (see  <xref target="appendix-a"/>).</t></dd>
 </dl>
 </section>
 
@@ -488,7 +488,7 @@ est-duration  = "ESTIMATED-DURATION" durparam ":" dur-value CRLF
 
 durparam      = *(";" other-param)]]></sourcecode></dd>
 
-  <dt>Description:</dt><dd><t>In a "VTODO" calendar component the property <bcp14>MAY</bcp14> be used to specify the estimated duration for the to-do, with or without an explicit time window in which the event should be started and completed. When present, the "DTSTART" and "DUE" or "DTSTART" and "DURATION" properties represent the window in which the task can be performed. The "ESTIMATED-DURATION" property <bcp14>SHOULD</bcp14> be passed from the organizer to the "Attendee" in iTIP  <xref target="RFC5546"/> messages.</t></dd>
+  <dt>Description:</dt><dd><t>In a "VTODO" calendar component the property <bcp14>MAY</bcp14> be used to specify the estimated duration for the to-do, with or without an explicit time window in which the event should be started and completed. When present, the "DTSTART" and "DUE" or "DTSTART" and "DURATION" properties represent the window in which the task can be performed. The "ESTIMATED-DURATION" property <bcp14>SHOULD</bcp14> be passed from the "Organizer" to the "Attendee" in iTIP  <xref target="RFC5546"/> messages.</t></dd>
   <dt>Example:</dt><dd><t>The following example illustrates how this property is used to estimate a task duration of one hour:</t>
 
 <sourcecode type="text/calendar"><![CDATA[
@@ -536,16 +536,15 @@ substate         = "SUBSTATE" substateparam ":" substatevalue CRLF
 substateparam    = *(";" other-param)
 
 substatevalue    = ("OK"        ; everything is fine (the default)
-                  / "ERROR"     ; something is wrong (the REASON
-                  ;               code explains why)
+                  / "ERROR"     ; something is wrong (REASON
+                  ;               explains why)
                   / "SUSPENDED" ; waiting on some other task to
                   ;               complete or availability of a
-                  ;               resource (REASON code explains
-                  ;               why)
+                  ;               resource (REASON explains why)
                   / iana-token) ; other IANA-registered type
 ]]></sourcecode></dd>
 
-  <dt>Description:</dt><dd><t>The substate property allows additional qualification and granularity of states to be recorded, in particular for the IN-PROCESS state. It allows individual substates to be recorded without the need to define and publish a subtask associated with a parent task purely to track that a particular state has been reached. This property also allows parallel states to be expressed, such as indicating that a task has been suspended at whatever state it has reached.</t></dd>
+  <dt>Description:</dt><dd><t>The "SUBSTATE" property allows additional qualification and granularity of states to be recorded, in particular for the IN-PROCESS state. It allows individual substates to be recorded without the need to define and publish a subtask associated with a parent task purely to track that a particular state has been reached. This property also allows parallel states to be expressed, such as indicating that a task has been suspended at whatever state it has reached.</t></dd>
 <dt>Example:</dt>
 
 <dd><sourcecode type="text/calendar"><![CDATA[
@@ -567,7 +566,7 @@ END:VSTATUS]]></sourcecode></dd>
 
 <dl spacing="normal" newline="true">
   <dt>Property Name:</dt><dd><t>TASK-MODE</t></dd>
-  <dt>Purpose:</dt><dd><t>This property specifies automatic operations that servers acting on behalf of the organizer apply to tasks based on changes in attendee status (PARTSTAT).</t></dd>
+  <dt>Purpose:</dt><dd><t>This property specifies automatic operations that servers acting on behalf of the "Organizer" apply to tasks based on changes in "Attendee" status (PARTSTAT).</t></dd>
   <dt>Value Type:</dt><dd><t>TEXT</t></dd>
   <dt>Property Parameters:</dt><dd><t>IANA and non-standard property parameters can be specified on this property.</t></dd>
   <dt>Conformance:</dt><dd><t>This property can be specified zero times or once in a "VTODO" calendar component.</t></dd>
@@ -584,14 +583,14 @@ task-mode   = "TASK-MODE" taskmodeparam ":"
 
 taskmodeparam      = *(";" other-param)]]></sourcecode></dd>
 
-  <dt>Description:</dt><dd><t>In a "VTODO" calendar component, this property <bcp14>MAY</bcp14> be used to indicate to servers how they can automatically change the state of the task based on iTIP replies from "Attendees". For example, the server can automatically set the overall task status to COMPLETED when every attendee has marked their own status (PARTSTAT) as COMPLETED, or the server could mark the task as "FAILED" if its DUE date passes before completion. "TASK-MODE" processing is performed on the organizer's copy of the task.</t>
-  <t>To set the status, add a VSTATUS component as specified in <xref target="vstatus"/>.</t>
+  <dt>Description:</dt><dd><t>In a "VTODO" calendar component, this property <bcp14>MAY</bcp14> be used to indicate to servers how they can automatically change the state of the task based on iTIP replies from "Attendees". For example, the server can automatically set the overall task status to "COMPLETED" when every "Attendee" has marked their own status (PARTSTAT) as "COMPLETED", or the server could mark the task as "FAILED" if its DUE date passes before completion. "TASK-MODE" processing is performed on the "Organizer's" copy of the task.</t>
+  <t>To set the status, add a "VSTATUS" component as specified in <xref target="vstatus"/>.</t>
 
   <t>The property value is an IANA-registered token that defines the mode to be used for the task. The modes are described in the following subsections.</t>
 
   <t>If the "TASK-MODE" property is absent, then the "CLIENT" value is assumed.</t></dd>
 
-  <dt>AUTOMATIC-COMPLETION Task Mode:</dt><dd><t>The task mode value "AUTOMATIC-COMPLETION" indicates to the server that it <bcp14>SHOULD</bcp14> change the "VTODO" calendar component's status to "COMPLETED" as soon as all attendees in the task have replied with a "partstat" parameter set to "COMPLETED".</t>
+  <dt>AUTOMATIC-COMPLETION Task Mode:</dt><dd><t>The task mode value "AUTOMATIC-COMPLETION" indicates to the server that it <bcp14>SHOULD</bcp14> change the "VTODO" calendar component's status to "COMPLETED" as soon as all "Attendees" in the task have replied with a "partstat" parameter set to "COMPLETED".</t>
   <t>Failing the task <bcp14>MUST</bcp14> be handled by a client.</t></dd>
 
   <dt>AUTOMATIC-FAILURE Task Mode:</dt><dd><t>The task mode value "AUTOMATIC-FAILURE" indicates to the server that it <bcp14>SHOULD</bcp14> change the "VTODO" calendar component's status to "FAILED" if either:</t>
@@ -607,7 +606,7 @@ taskmodeparam      = *(";" other-param)]]></sourcecode></dd>
 
 <dt>CLIENT Task Mode:</dt><dd><t>The task mode value "CLIENT" is an instruction to the server to honor the status set by the client.</t></dd>
 
-<dt>SERVER Task Mode:</dt><dd><t>The task mode value "SERVER" indicates to the server that it <bcp14>SHOULD</bcp14> change the "VTODO" calendar component's status to an appropriate value, based on implementation-defined "business rules", as attendee responses are processed or as deadlines related to the task pass.</t>
+<dt>SERVER Task Mode:</dt><dd><t>The task mode value "SERVER" indicates to the server that it <bcp14>SHOULD</bcp14> change the "VTODO" calendar component's status to an appropriate value, based on implementation-defined "business rules", as "Attendee" responses are processed or as deadlines related to the task pass.</t>
 </dd>
 <dt>Examples:</dt><dd>
 
@@ -662,7 +661,7 @@ TASK-MODE:SERVER]]></sourcecode>
 
 <section anchor="prop-ext-status"><name>Redefined STATUS Property</name>
 
-<t>The Status property is defined in <xref target="RFC5545" section="3.8.1.11"/>. This specification extends that property to include new values associated with "VTODO" calendar components (see <xref target="appendix-a"/> for examples of the task state lifecycle).</t>
+<t>The "STATUS" property is defined in <xref target="RFC5545" section="3.8.1.11"/>. This specification extends that property to include new values associated with "VTODO" calendar components (see <xref target="appendix-a"/> for examples of the task state lifecycle).</t>
 
 <dl spacing="normal" newline="true">
   <dt>Format Definition:</dt><dd><t>The "STATUS" property parameter list for tasks is redefined by the addition of the values "PENDING" and "FAILED":</t>
@@ -686,7 +685,7 @@ statvalue-todo  = "NEEDS-ACTION" ; To-do needs action.
       yet started and is ready to start subject to other dependencies
       (e.g., a preceding task or DTSTART). This is the default state.</dd>
       <dt>FAILED:</dt><dd>A to-do has failed and may need some follow-up from the
-      organizer to reschedule or cancel.</dd>
+      "Organizer" to reschedule or cancel.</dd>
     </dl>
   </dd>
 <dt>Example:</dt><dd><t>The following is an example of this property for a "VTODO" calendar component:</t>
@@ -709,7 +708,7 @@ STATUS:FAILED]]></sourcecode></dd>
 
 <t>This component may be added to the "PARTICIPANT" component <xref target="RFC9073"/> to allow participants in a task to specify their own status.</t>
 
-<t>For backwards compatibility, when a VSTATUS component is added, the STATUS property <xref target="RFC5545"/> <bcp14>MUST</bcp14> be set on the parent component.</t>
+<t>For backwards compatibility, when a "VSTATUS" component is added, the "STATUS" property <xref target="RFC5545"/> <bcp14>MUST</bcp14> be set on the parent component.</t>
 
 <dl spacing="normal" newline="true">
   <dt>Format Definition:</dt><dd><t>This component is defined by the following notation:</t>
@@ -1117,9 +1116,9 @@ uppercase preferred -->]]></sourcecode>
 
 <section><name>Simple Case Status Change</name>
 
-<t>The following is an example of status changes when assigning and performing a task with one attendee.</t>
+<t>The following is an example of status changes when assigning and performing a task with one "Attendee".</t>
 <table>
-  <name>Example of Status Changes in Assigning and Performing a Task with One Attendee</name>
+  <name>Example of Status Changes in Assigning and Performing a Task with One "Attendee"</name>
   <thead>
     <tr>
       <th align="left"></th>
@@ -1177,10 +1176,10 @@ uppercase preferred -->]]></sourcecode>
 
 <section><name>Example for Multiple Attendees</name>
 
-<t>The following is an example of status changes when assigning and performing a task with two attendees (A1 and A2).</t>
+<t>The following is an example of status changes when assigning and performing a task with two "Attendees" (A1 and A2).</t>
 
 <table>
-  <name>Example for Multiple Attendees</name>
+  <name>Example for Multiple "Attendees"</name>
   <thead>
     <tr>
       <th align="left"></th>
@@ -1259,7 +1258,7 @@ uppercase preferred -->]]></sourcecode>
       <td align="left">COMPLETED</td>
       <td align="left">COMPLETED</td>
       <td align="left">COMPLETED</td>
-      <td align="left">Overall state set once both attendees are finished. May be set by either the Organizer for TASK-MODE=CLIENT or the server for AUTOMATIC-COMPLETION</td>
+      <td align="left">Overall state set once both "Attendees" are finished. May be set by either the Organizer for TASK-MODE=CLIENT or the server for AUTOMATIC-COMPLETION</td>
     </tr>
   </tbody>
 </table>
