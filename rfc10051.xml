@@ -193,7 +193,7 @@ Process Logic defines task creation, while Task Assignment Rules determine task 
 </dd>
 </dl>
 
-<t>It is not within the scope of this document to specify how Process Logic or Task Assignment Rules are codified. Such logic and rules may be codified in a variety of ways, including traditional programming languages (e.g., C++ and Java) or process modeling languages (e.g., Business Process Model and Notation (BPMN) <xref target="BPMN"/>).</t>
+<t>It is not within the scope of this document to specify how Process Logic or Task Assignment Rules are codified. Such logic and rules may be codified in a variety of ways, including conventional programming languages (e.g., C++ and Java) or process modeling languages (e.g., Business Process Model and Notation (BPMN) <xref target="BPMN"/>).</t>
 </section>
 
 <section anchor="architecture-foundations"><name>Architecture Foundations</name>
